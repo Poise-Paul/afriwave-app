@@ -5,6 +5,7 @@ import CountryPickerModal from "@/components/onboarding/CountryPickerModal";
 import { Country } from "@/types";
 import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useQuery } from "@tanstack/react-query";
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   Image,
@@ -121,15 +122,27 @@ const index = (props: Props) => {
               </TouchableOpacity>
 
               <Text className="text-white">
-                I agree to the{" "}
+                I agree to the
                 <Text className="text-green-500">Terms of Service</Text> and
               </Text>
             </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
+
+      {/* Work Screen */}
+      <TouchableOpacity
+      className="mx-auto"
+        onPress={() => router.push("/(app)/(tabs)")}
+      >
+        <Text className="text-white">Go to work screen</Text>
+      </TouchableOpacity>
+      {/* End Work Screen */}
       <View className="m-5 flex flex-col gap-4 mb-20">
-        <TouchableOpacity className="bg-[#2dc75b] p-5">
+        <TouchableOpacity
+          onPress={() => router.push("/EmailVerification")}
+          className="bg-[#2dc75b] p-5"
+        >
           <Text className="text-center">Proceed</Text>
         </TouchableOpacity>
         <View className="flex flex-row justify-between items-center">

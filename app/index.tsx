@@ -1,11 +1,11 @@
 import { router } from "expo-router";
 import React from "react";
 import {
-    Image,
-    SafeAreaView,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 type Props = {};
@@ -35,6 +35,13 @@ const index = (props: Props) => {
         <Text className="text-gray-500">
           Experience the future of cross-border payments
         </Text>
+        {/* Work Screen */}
+        <TouchableOpacity
+          onPress={() => router.push("/(app)/(tabs)")}
+        >
+          <Text className="text-white">Go to work screen</Text>
+        </TouchableOpacity>
+        {/* End Work Screen */}
         <TouchableOpacity
           onPress={() => router.push("/(onboarding)")}
           className="w-full bg-[#2dc75b] p-5"
