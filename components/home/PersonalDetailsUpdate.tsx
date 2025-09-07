@@ -1,12 +1,31 @@
-import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
-import React from "react";
+import {
+  FontAwesome5,
+  MaterialCommunityIcons,
+  Octicons,
+} from "@expo/vector-icons";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import InputText from "../InputText";
 
-type Props = {};
+type Props = {
+  setActiveTab: (value: number) => void;
+};
 
-const PersonalDetailsUpdate = (props: Props) => {
+const PersonalDetailsUpdate = ({ setActiveTab }: Props) => {
+  const [selectedGender, setSelectedGender] = useState<string | null>(null);
   const genders = ["Male", "Female", "Other"];
+
+  const [date, setDate] = useState(new Date());
+  const [show, setShow] = useState(false);
+  const [mode, setMode] = useState<"date" | "time">("date");
+
+  const onChange = (event: any, selectedDate?: Date) => {
+    const currentDate = selectedDate || date;
+    setShow(false);
+    setDate(currentDate);
+  };
+
   return (
     <View className="flex-1 mt-5">
       <Text className="text-3xl font-bold text-white">Profile Details</Text>
@@ -65,13 +84,18 @@ const PersonalDetailsUpdate = (props: Props) => {
           <View className="flex gap-4 flex-row">
             {genders.map((x, key) => (
               <TouchableOpacity
+                onPress={() => setSelectedGender(x)}
                 key={key}
                 className="flex gap-1 flex-row items-center"
               >
                 <MaterialCommunityIcons
-                  name="checkbox-blank-circle"
+                  name={
+                    selectedGender == x
+                      ? "checkbox-marked-circle"
+                      : "checkbox-blank-circle"
+                  }
                   size={24}
-                  color="white"
+                  color={selectedGender == x ? "#2DC85B" : "white"}
                 />
                 <Text className="text-white">{x}</Text>
               </TouchableOpacity>
@@ -81,10 +105,30 @@ const PersonalDetailsUpdate = (props: Props) => {
 
         <View className="flex flex-col gap-2">
           <Text className="text-white">Date of Birth</Text>
-          <View className="flex justify-between items-center flex-row">
-           <TextInput placeholder="DD/MM/YYYY" />
+          <View className="flex border-[#525252] border-[1px] justify-between p-4 bg-[#1a1a1a] items-center flex-row">
+            <TextInput
+              className="text-gray-300"
+              placeholder="DD/MM/YYYY"
+              value={date ? date.toDateString() : ""}
+            />
+            <FontAwesome5 name="calendar-day" size={24} color="#d1d5db" />
           </View>
+
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            onChange={onChange}
+            themeVariant="dark"
+          />
         </View>
+        <TouchableOpacity
+          onPress={() => setActiveTab(0)}
+          className="bg-primary p-4"
+        >
+          <Text className="text-center">Save Details</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
