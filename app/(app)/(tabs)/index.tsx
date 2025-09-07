@@ -1,5 +1,7 @@
 import AccountVerification from "@/components/home/AccountVerification";
+import DocumentSelection from "@/components/home/DocumentSelection";
 import EmailVerification from "@/components/home/EmailVerification";
+import IDVerification from "@/components/home/IDVerification";
 import PersonalDetailsUpdate from "@/components/home/PersonalDetailsUpdate";
 import PhoneVerification from "@/components/home/PhoneVerification";
 import RegionSelection from "@/components/home/RegionSelection";
@@ -8,7 +10,7 @@ import { useState } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 
 export default function HomeScreen() {
-  const [activeTab, setActiveTab] = useState(4);
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <SafeAreaView className="flex-1 bg-black">
@@ -23,7 +25,9 @@ export default function HomeScreen() {
         )}
         {activeTab == 2 && <PhoneVerification setActiveTab={setActiveTab} />}
         {activeTab == 3 && <EmailVerification setActiveTab={setActiveTab} />}
-        {activeTab == 4 && <RegionSelection setActiveTab={setActiveTab} />}
+        {activeTab == 4 && <IDVerification setActiveTab={setActiveTab} />}
+        {activeTab == 5 && <RegionSelection setActiveTab={setActiveTab} />}
+        {activeTab == 6 && <DocumentSelection setActiveTab={setActiveTab} />}
       </ScrollView>
     </SafeAreaView>
   );
