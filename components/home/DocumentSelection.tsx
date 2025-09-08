@@ -6,7 +6,7 @@ type Props = {
   setActiveTab: (value: number) => void;
 };
 
-const DocumentSelection = (props: Props) => {
+const DocumentSelection = ({ setActiveTab }: Props) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const documents = [
     {
@@ -98,7 +98,10 @@ const DocumentSelection = (props: Props) => {
           ))}
         </View>
       </View>
-      <TouchableOpacity className="bg-primary p-4">
+      <TouchableOpacity
+        onPress={() => setActiveTab(7)}
+        className="bg-primary p-4"
+      >
         <Text className="text-center">Continue to Document Capture</Text>
       </TouchableOpacity>
     </View>
