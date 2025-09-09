@@ -47,7 +47,10 @@ const login = (props: Props) => {
 
                 <Text className="text-primary text-lg">Face ID Unlock</Text>
               </View>
-              <TouchableOpacity onPress={() => router.push("/(app)/(tabs)")} className="bg-primary p-4">
+              <TouchableOpacity
+                onPress={() => router.push("/(app)/(tabs)")}
+                className="bg-primary p-4"
+              >
                 <Text className="text-center">Sign In</Text>
               </TouchableOpacity>
               <View className="flex flex-row mt-5 justify-center gap-2 items-center">
