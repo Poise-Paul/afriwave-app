@@ -30,6 +30,14 @@ export default function RootLayout() {
             name="WalletCreatedSuccessfully"
             options={{ presentation: "modal", headerShown: false }}
           />
+          <Stack.Screen
+            name="CurrencyWallet"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FundCurrencyWallet"
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
       </QueryClientProvider>

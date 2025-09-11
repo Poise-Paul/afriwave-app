@@ -132,7 +132,8 @@ const Home = ({ setActiveTab }: Props) => {
         {walletCreated ? (
           <View className="flex flex-row gap-4 flex-wrap">
             {wallets.map((wallet, key) => (
-              <View
+              <TouchableOpacity
+              onPress={() => router.push("/CurrencyWallet")}
                 key={key}
                 className="bg-[#1A1A1A] flex flex-col gap-3 w-[48.3%] p-5"
               >
@@ -149,7 +150,7 @@ const Home = ({ setActiveTab }: Props) => {
                   {wallet.amount}
                 </Text>
                 <Text className="text-primary">{wallet.name}</Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         ) : (
