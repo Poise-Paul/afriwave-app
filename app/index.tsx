@@ -37,7 +37,7 @@ const index = (props: Props) => {
         </Text>
         {/* Work Screen */}
         <TouchableOpacity
-          onPress={() => router.push("/(app)/(tabs)")}
+          onPress={() => router.push("/(app)/WalletFundingFailed")}
         >
           <Text className="text-white">Go to work screen</Text>
         </TouchableOpacity>

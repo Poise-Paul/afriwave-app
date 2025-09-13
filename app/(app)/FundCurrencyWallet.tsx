@@ -1,7 +1,19 @@
 import LogoHeader02 from "@/components/LogoHeader02";
-import { FontAwesome6, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import {
+  FontAwesome6,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
-import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 type Props = {};
 
@@ -59,7 +71,10 @@ const FundCurrencyWallet = (props: Props) => {
         </View>
       </ScrollView>
       <View className="p-5">
-        <TouchableOpacity className="bg-primary/50 p-4 rounded-full">
+        <TouchableOpacity
+          onPress={() => router.push("/SelectPaymentMethod")}
+          className="bg-primary/50 p-4 rounded-full"
+        >
           <Text className="text-white text-xl text-center">Continue</Text>
         </TouchableOpacity>
       </View>

@@ -38,6 +38,19 @@ export default function RootLayout() {
             name="FundCurrencyWallet"
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="CardDetails" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="WalletFundedSuccessfully"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="WalletFundingFailed"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SelectPaymentMethod"
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
       </QueryClientProvider>
