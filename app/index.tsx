@@ -36,9 +36,7 @@ const index = (props: Props) => {
           Experience the future of cross-border payments
         </Text>
         {/* Work Screen */}
-        <TouchableOpacity
-          onPress={() => router.push("/(app)/PaymentCancelled")}
-        >
+        <TouchableOpacity onPress={() => router.push("/(app)/(tabs)")}>
           <Text className="text-white">Go to work screen</Text>
         </TouchableOpacity>
         {/* End Work Screen */}

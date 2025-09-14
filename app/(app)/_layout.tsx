@@ -63,6 +63,28 @@ export default function RootLayout() {
             name="PaymentCancelled"
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="ReviewScreen" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="PaymentSuccessful"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ProcessingPayment"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="SendMoneyPage" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="SendMoneyPageSecond"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="NGNBankDetails"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TransferPreview"
+            options={{ headerShown: false }}
+          />
           <Stack.Screen
             name="SelectPaymentMethod"
             options={{ headerShown: false }}

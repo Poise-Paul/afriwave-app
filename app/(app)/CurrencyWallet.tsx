@@ -165,7 +165,10 @@ const CurrencyWallet = (props: Props) => {
               >
                 <Text className="text-white">Fund Wallet</Text>
               </TouchableOpacity>
-              <TouchableOpacity className="bg-primary p-5">
+              <TouchableOpacity
+                onPress={() => router.push("/SendMoneyPage")}
+                className="bg-primary p-5"
+              >
                 <Text className="text-white">Send</Text>
               </TouchableOpacity>
               <TouchableOpacity className="bg-primary p-5">
