@@ -1,4 +1,6 @@
 import LogoHeader02 from "@/components/LogoHeader02";
+import { updateSelWallet } from "@/redux/slices/WalletSlice";
+import { RootState } from "@/redux/store/store";
 import {
   FontAwesome5,
   MaterialCommunityIcons,
@@ -14,24 +16,26 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 type Props = {};
 
 const CurrencyWallet = (props: Props) => {
+  const { selWallet } = useSelector((state: RootState) => state.wallet);
   const infos = [
     {
       name: "Total Deposits",
-      amount: "$32,450.00",
+      amount: "32,450.00",
       icon: <MaterialIcons name="arrow-downward" size={24} color="#2DC85B" />,
     },
     {
       name: "Total Withdrawals",
-      amount: "$7,863.50",
+      amount: `7,863.50`,
       icon: <MaterialIcons name="arrow-upward" size={24} color="#FF4D4E" />,
     },
     {
       name: "Pending",
-      amount: "$1,250.00",
+      amount: `1,250.00`,
       icon: (
         <MaterialCommunityIcons
           name="clock-time-four"
@@ -51,7 +55,11 @@ const CurrencyWallet = (props: Props) => {
     {
       name: "Deposit from Bank",
       date: "May 15, 2023",
-      amount: "+$5,000.00",
+      amount: `+${selWallet == "USD" ? "$" : ""}${
+        selWallet == "CAD" ? "C$" : ""
+      }${selWallet == "NGN" ? "₦" : ""}${
+        selWallet == "GBP" ? "£" : ""
+      }5,000.00`,
       type: "credit",
       icon: (
         <MaterialCommunityIcons name="arrow-down" size={24} color="#2DC85B" />
@@ -60,7 +68,9 @@ const CurrencyWallet = (props: Props) => {
     {
       name: "Transfer to James",
       date: "May 12, 2023",
-      amount: "-$750.00",
+      amount: `-${selWallet == "USD" ? "$" : ""}${
+        selWallet == "CAD" ? "C$" : ""
+      }${selWallet == "NGN" ? "₦" : ""}${selWallet == "GBP" ? "£" : ""}750.00`,
       type: "debit",
       icon: (
         <MaterialCommunityIcons name="arrow-up" size={24} color="#FF4D4E" />
@@ -69,7 +79,11 @@ const CurrencyWallet = (props: Props) => {
     {
       name: "Converted to NGN",
       date: "May 10, 2023",
-      amount: "-$1,200.00",
+      amount: `-${selWallet == "USD" ? "$" : ""}${
+        selWallet == "CAD" ? "C$" : ""
+      }${selWallet == "NGN" ? "₦" : ""}${
+        selWallet == "GBP" ? "£" : ""
+      }1,200.00`,
       type: "debit",
       icon: (
         <MaterialCommunityIcons name="arrow-left" size={24} color="#3b82f6" />
@@ -78,13 +92,28 @@ const CurrencyWallet = (props: Props) => {
     {
       name: "Payment from Sarah",
       date: "May 8, 2023",
-      amount: "+$325.50",
+      amount: `+${selWallet == "USD" ? "$" : ""}${
+        selWallet == "CAD" ? "C$" : ""
+      }${selWallet == "NGN" ? "₦" : ""}${selWallet == "GBP" ? "£" : ""}325.50`,
       type: "credit",
       icon: (
         <MaterialCommunityIcons name="arrow-down" size={24} color="#2DC85B" />
       ),
     },
   ];
+
+  const allWallets = [
+    { code: "USD", label: "USD Wallet" },
+    { code: "GBP", label: "GBP Wallet" },
+    { code: "NGN", label: "Naira Wallet" },
+    { code: "CAD", label: "CAD Wallet" },
+  ];
+
+  const filteredWallets = allWallets.filter(
+    (wallet) => wallet.code !== selWallet
+  );
+
+  const dispatch = useDispatch();
   return (
     <SafeAreaView className="flex-1 bg-black">
       <LogoHeader02 />
@@ -94,8 +123,10 @@ const CurrencyWallet = (props: Props) => {
           paddingBottom: 50,
         }}
       >
-        <View className="flex-1 flex-col gap-4 mt-4">
-          <Text className="font-bold text-3xl text-white">USD Wallet</Text>
+        <View className="flex-1 flex-col p-3 gap-4 mt-4">
+          <Text className="font-bold text-3xl text-white">
+            {selWallet} Wallet
+          </Text>
           <View className="bg-[#1A1A1A] flex flex-col gap-4 p-5">
             <View className="flex justify-between items-center flex-row w-full">
               <Text className="text-gray-300 text-xl">Available Balance</Text>
@@ -103,9 +134,19 @@ const CurrencyWallet = (props: Props) => {
             </View>
             <View className="flex flex-row items-center gap-2">
               <View className="bg-[#047429] h-16 w-16 flex justify-center items-center rounded-full">
-                <Text className="text-4xl text-white font-bold">$</Text>
+                <Text className="text-4xl text-white font-bold">
+                  {selWallet == "USD" && "$"}
+                  {selWallet == "CAD" && "C$"}
+                  {selWallet == "NGN" && "₦"}
+                  {selWallet == "GBP" && "£"}
+                </Text>
               </View>
-              <Text className="text-5xl font-bold text-white">24,586.50</Text>
+              <Text className="text-5xl font-bold text-white">
+                {selWallet == "USD" && "8,245.50"}
+                {selWallet == "CAD" && "2,105.82"}
+                {selWallet == "NGN" && "845,320"}
+                {selWallet == "GBP" && "1,107.00"}
+              </Text>
             </View>
             <View className="flex flex-row justify-between">
               <View>
@@ -114,11 +155,14 @@ const CurrencyWallet = (props: Props) => {
               </View>
               <View>
                 <Text className="text-gray-300">Currency</Text>
-                <Text className="text-white text-lg">USD</Text>
+                <Text className="text-white text-lg">{selWallet}</Text>
               </View>
             </View>
             <View className="flex flex-row gap-3">
-              <TouchableOpacity onPress={() => router.push("/FundCurrencyWallet")} className="bg-primary p-5">
+              <TouchableOpacity
+                onPress={() => router.push("/FundCurrencyWallet")}
+                className="bg-primary p-5"
+              >
                 <Text className="text-white">Fund Wallet</Text>
               </TouchableOpacity>
               <TouchableOpacity className="bg-primary p-5">
@@ -141,6 +185,10 @@ const CurrencyWallet = (props: Props) => {
                   <Text className="text-gray-400 text-lg">{x.name}</Text>
                 </View>
                 <Text className="font-bold text-white text-3xl">
+                  {selWallet == "USD" && "$"}
+                  {selWallet == "CAD" && "C$"}
+                  {selWallet == "NGN" && "₦"}
+                  {selWallet == "GBP" && "£"}
                   {x.amount}
                 </Text>
               </View>
@@ -174,7 +222,7 @@ const CurrencyWallet = (props: Props) => {
                     </View>
                     <View>
                       <Text className="font-bold text-white text-xl">
-                        Deposit from Bank{" "}
+                        {x.name}
                       </Text>
                       <Text className="text-gray-300">May 15, 2023</Text>
                     </View>
@@ -192,12 +240,15 @@ const CurrencyWallet = (props: Props) => {
             ))}
           </View>
           <View className="flex flex-row mt-10 items-center gap-4">
-            <TouchableOpacity className="bg-primary/50 px-5 py-3 rounded-full">
-              <Text className="text-white text-lg">CAD Wallet</Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="bg-primary/50 px-5 py-3 rounded-full">
-              <Text className="text-white text-lg">NGN Wallet</Text>
-            </TouchableOpacity>
+            {filteredWallets.map((wallet) => (
+              <TouchableOpacity
+                onPress={() => dispatch(updateSelWallet(wallet.code))}
+                key={wallet.code}
+                className="bg-primary/50 px-5 py-3 rounded-full"
+              >
+                <Text className="text-white text-lg">{wallet.label}</Text>
+              </TouchableOpacity>
+            ))}
           </View>
         </View>
       </ScrollView>

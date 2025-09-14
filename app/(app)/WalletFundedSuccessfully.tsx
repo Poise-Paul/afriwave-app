@@ -1,5 +1,6 @@
 import LogoHeader02 from "@/components/LogoHeader02";
 import { MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
 import {
   SafeAreaView,
@@ -61,7 +62,10 @@ const WalletFundedSuccessfully = (props: Props) => {
                 Download Reciept
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity className="border-primary/50 border-[1px] p-4 rounded-full">
+            <TouchableOpacity
+              onPress={() => router.push("/(app)/(tabs)")}
+              className="border-primary/50 border-[1px] p-4 rounded-full"
+            >
               <Text className="text-lg text-white text-center">
                 Return to Dashboard
               </Text>

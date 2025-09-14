@@ -7,8 +7,9 @@ import {
 import { router } from "expo-router";
 import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AccountBalance from "./AccountBalance";
+import { updateSelWallet } from "@/redux/slices/WalletSlice";
 
 type Props = {
   setActiveTab: (value: number) => void;
@@ -61,6 +62,8 @@ const Home = ({ setActiveTab }: Props) => {
       icon: <MaterialCommunityIcons name="arrow-left" size={24} color="#FFF" />,
     },
   ];
+
+  const dispatch = useDispatch();
   return (
     <View className="flex-1 flex-col p-3 gap-5">
       <View className="mt-5">
@@ -115,7 +118,7 @@ const Home = ({ setActiveTab }: Props) => {
                   <Text className="text-[#F59E0B]">Later</Text>
                 </TouchableOpacity>
               </View>
-              <Text className="text-gray-400 my-3">It takes 2-3 minutes</Text>
+              <Text className="text-gray-200 my-3">It takes 2-3 minutes</Text>
             </View>
           </View>
         </View>
@@ -133,7 +136,10 @@ const Home = ({ setActiveTab }: Props) => {
           <View className="flex flex-row gap-4 flex-wrap">
             {wallets.map((wallet, key) => (
               <TouchableOpacity
-              onPress={() => router.push("/CurrencyWallet")}
+                onPress={() => {
+                  dispatch(updateSelWallet(wallet.cur));
+                  router.push("/CurrencyWallet");
+                }}
                 key={key}
                 className="bg-[#1A1A1A] flex flex-col gap-3 w-[48.3%] p-5"
               >

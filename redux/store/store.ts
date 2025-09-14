@@ -1,7 +1,8 @@
 import dashboardReducer from "@/redux/slices/DashboardSlice";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
+import walletReducer from "../slices/WalletSlice";
 // import NetworkReducer from "../slices/network/NetworkSlice";
 
 const persistConfig = {
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   dashboard: dashboardReducer,
+  wallet: walletReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

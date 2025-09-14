@@ -48,6 +48,22 @@ export default function RootLayout() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="FundWithInterac"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FundingPendingScreen"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FundViaBankTransfer"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="PaymentCancelled"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="SelectPaymentMethod"
             options={{ headerShown: false }}
           />
