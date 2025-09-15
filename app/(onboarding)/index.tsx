@@ -131,12 +131,12 @@ const index = (props: Props) => {
       </ScrollView>
 
       {/* Work Screen */}
-      <TouchableOpacity
+      {/* <TouchableOpacity
       className="mx-auto"
         onPress={() => router.push("/(app)/(tabs)")}
       >
         <Text className="text-white">Go to work screen</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       {/* End Work Screen */}
       <View className="m-5 flex flex-col gap-4 mb-20">
         <TouchableOpacity
