@@ -73,10 +73,10 @@ const TransferPreviewReciept = (props: Props) => {
           </View>
 
           <TouchableOpacity
-            onPress={() => router.push("/ProcessingPayment")}
-            className="bg-primary/70 mt-5 p-4"
+            onPress={() => router.push("/EnterPinScreen")}
+            className="bg-primary/70 mt-3 p-4"
           >
-            <Text className="text-center text-white">Make Payment</Text>
+            <Text className="text-center text-lg">Make Payment</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

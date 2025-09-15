@@ -83,7 +83,7 @@ const Home = ({ setActiveTab }: Props) => {
               <Text className="font-bold text-xl text-white">
                 Your account isn't verified
               </Text>
-              <Text className="text-gray-400 max-w-80 text-lg">
+              <Text className="text-gray-400 max-w-96 text-lg">
                 Verify your identity to unlock transfers, higher limits, and
                 full access.
               </Text>

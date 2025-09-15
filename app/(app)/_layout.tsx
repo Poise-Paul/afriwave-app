@@ -98,6 +98,18 @@ export default function RootLayout() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="EnterPinScreen"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SuccessfulWithReciept"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ProcessingWithReciept"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="SendAfriwaveUser"
             options={{ headerShown: false }}
           />
