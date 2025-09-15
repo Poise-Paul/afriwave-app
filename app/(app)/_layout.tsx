@@ -90,6 +90,14 @@ export default function RootLayout() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="SelectAfriWaveReciepient"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TransferPreviewReciept"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="SendAfriwaveUser"
             options={{ headerShown: false }}
           />
