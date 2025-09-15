@@ -86,6 +86,14 @@ export default function RootLayout() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="AfriwaveTransferPreview"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SendAfriwaveUser"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="SelectPaymentMethod"
             options={{ headerShown: false }}
           />

@@ -1,13 +1,22 @@
 import { RootState } from "@/redux/store/store";
-import { MaterialIcons } from "@expo/vector-icons";
+import {
+  FontAwesome6,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import { router } from "expo-router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Image,
+  Keyboard,
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
   SafeAreaView,
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import { useSelector } from "react-redux";
@@ -16,6 +25,22 @@ type Props = {};
 
 const SendMoneyPage = (props: Props) => {
   const { selWallet } = useSelector((state: RootState) => state.wallet);
+
+  const [methodModal, showMethodModal] = useState(false);
+
+  const [selMethod, setSelMethod] = useState("");
+
+  useEffect(() => {
+    if (selWallet == "USD" || selWallet == "GBP") {
+      setSelMethod("Zelle");
+    } else if (selWallet == "CAD") {
+      setSelMethod("Interac");
+    } else if (selWallet == "NGN") {
+      setSelMethod("Bank Transfer");
+    }
+  }, [selWallet]);
+
+  const methods = ["Zelle", "Interac", "Bank Transfer", "Afriwave User"];
   return (
     <SafeAreaView className="flex-1 bg-black">
       <View className="p-5 flex flex-col gap-10">
@@ -57,7 +82,10 @@ const SendMoneyPage = (props: Props) => {
         </View>
         <View className="bg-[#1A1A1A] flex flex-col gap-4 p-4">
           <Text className="text-gray-400">Transfer Method</Text>
-          <TouchableOpacity className="flex justify-between items-center flex-row">
+          <TouchableOpacity
+            onPress={() => showMethodModal(true)}
+            className="flex justify-between items-center flex-row"
+          >
             <View className="flex items-center flex-row gap-4">
               <View className="bg-[#2d2d2d] p-1">
                 <Image
@@ -65,11 +93,7 @@ const SendMoneyPage = (props: Props) => {
                   source={require("@/assets/images/zelle.png")}
                 />
               </View>
-              <Text className="text-2xl text-white font-bold">
-                {selWallet == "CAD" && "Interac"}
-                {selWallet == "USD" || selWallet == "GBP" ? "Zelle" : ""}
-                {selWallet == "NGN" && "Bank Transfer"}
-              </Text>
+              <Text className="text-2xl text-white font-bold">{selMethod}</Text>
             </View>
             <MaterialIcons
               name="keyboard-arrow-down"
@@ -97,10 +121,12 @@ const SendMoneyPage = (props: Props) => {
 
         <TouchableOpacity
           onPress={() => {
-            if (selWallet == "NGN") {
+            if (selMethod == "Bank Transfer") {
               router.push("/NGNBankDetails");
-            } else {
+            } else if (selMethod == "Zelle" || selMethod == "Interac") {
               router.push("/SendMoneyPageSecond");
+            }else if (selMethod == "Afriwave User") {
+                router.push("/SendAfriwaveUser")
             }
           }}
           className="bg-primary/70 rounded-full p-4"
@@ -108,6 +134,70 @@ const SendMoneyPage = (props: Props) => {
           <Text className="text-center text-white">Continue</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Select Payment Source */}
+      <Modal
+        visible={methodModal}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => showMethodModal(false)}
+      >
+        <TouchableWithoutFeedback onPress={() => showMethodModal(false)}>
+          <View className="flex-1 justify-end bg-[#1E1E1E]/50">
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+              <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : undefined}
+                className="bg-black rounded-t-2xl max-h-[90%]"
+              >
+                <View className="bg-black p-5 mb-10 rounded-t-3xl">
+                  <View className="flex flex-row justify-end">
+                    <TouchableOpacity
+                      onPress={() => showMethodModal(false)}
+                      className="rounded-full flex justify-center items-center h-10 w-10 bg-[#000]/10"
+                    >
+                      <FontAwesome6 name="xmark" size={24} color="#000" />
+                    </TouchableOpacity>
+                  </View>
+                  <View className="flex text-center flex-col gap-4">
+                    <Text className="text-2xl text-white font-semibold">
+                      Choose Wallet
+                    </Text>
+                    <View className="flex gap-3 my-4 flex-col">
+                      {methods.map((x, key) => (
+                        <TouchableOpacity
+                          key={key}
+                          onPress={() => setSelMethod(x)}
+                          className="flex justify-between flex-row"
+                        >
+                          <Text className="text-white">{x}</Text>
+                          <MaterialCommunityIcons
+                            name={
+                              x == selMethod
+                                ? "checkbox-marked-circle"
+                                : "checkbox-blank-circle-outline"
+                            }
+                            size={24}
+                            color="white"
+                          />
+                        </TouchableOpacity>
+                      ))}
+                    </View>
+
+                    <TouchableOpacity
+                      onPress={() => showMethodModal(false)}
+                      className="bg-primary p-4"
+                    >
+                      <Text className="font-NeuePlakSemibold text-center text-lg text-white">
+                        Continue
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </KeyboardAvoidingView>
+            </TouchableWithoutFeedback>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
     </SafeAreaView>
   );
 };

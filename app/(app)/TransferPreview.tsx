@@ -1,4 +1,5 @@
 import { FontAwesome5 } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 
@@ -44,20 +45,18 @@ const TransferPreview = (props: Props) => {
             </View>
             <View className="flex items-center justify-between flex-row">
               <View className="flex flex-row gap-2 items-center">
-                <FontAwesome5
-                  name="calculator"
-                  size={18}
-                  color="#2DC85B"
-                />
+                <FontAwesome5 name="calculator" size={18} color="#2DC85B" />
                 <Text className="text-white text-lg">Total Fee</Text>
               </View>
               <Text className="text-white text-lg">$7.49</Text>
             </View>
-
           </View>
         </View>
-        <TouchableOpacity className="bg-primary p-4">
-        <Text className="text-center">Make Payment</Text>
+        <TouchableOpacity
+          onPress={() => router.push("/PaymentSuccessful")}
+          className="bg-primary p-4"
+        >
+          <Text className="text-center">Make Payment</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
