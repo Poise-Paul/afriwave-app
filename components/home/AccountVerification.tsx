@@ -26,7 +26,7 @@ const AccountVerification = ({ setActiveTab }: Props) => {
     },
   ];
   return (
-    <View className="mt-5">
+    <View className="mt-5 p-5">
       <Text className="text-3xl font-bold text-white">
         Account Verification
       </Text>
@@ -47,7 +47,7 @@ const AccountVerification = ({ setActiveTab }: Props) => {
         {verifications.map((x, key) => (
           <View key={key} className="bg-[#1A1A1A] flex flex-col gap-6 p-5">
             <View className="flex justify-between items-center flex-row">
-              <Text className="font-bold text-white text-xl">{x.title}</Text>
+              <Text className="font-bold text-white text-lg">{x.title}</Text>
               <Text className="text-[#E9B30B]">Pending</Text>
             </View>
             <Text className="text-gray-400">{x.desc}</Text>

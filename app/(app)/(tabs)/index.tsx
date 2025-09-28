@@ -18,7 +18,7 @@ import { useState } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 
 export default function HomeScreen() {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(13);
 
   return (
     <SafeAreaView className="flex-1 bg-black">

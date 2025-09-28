@@ -133,15 +133,15 @@ const CurrencyWallet = (props: Props) => {
               <Text className="text-white">Active</Text>
             </View>
             <View className="flex flex-row items-center gap-2">
-              <View className="bg-[#047429] h-16 w-16 flex justify-center items-center rounded-full">
-                <Text className="text-4xl text-white font-bold">
+              <View className="bg-[#047429] h-12 w-12 flex justify-center items-center rounded-full">
+                <Text className="text-3xl text-white font-bold">
                   {selWallet == "USD" && "$"}
                   {selWallet == "CAD" && "C$"}
                   {selWallet == "NGN" && "₦"}
                   {selWallet == "GBP" && "£"}
                 </Text>
               </View>
-              <Text className="text-5xl font-bold text-white">
+              <Text className="text-3xl font-bold text-white">
                 {selWallet == "USD" && "8,245.50"}
                 {selWallet == "CAD" && "2,105.82"}
                 {selWallet == "NGN" && "845,320"}
@@ -161,27 +161,27 @@ const CurrencyWallet = (props: Props) => {
             <View className="flex flex-row gap-3">
               <TouchableOpacity
                 onPress={() => router.push("/FundCurrencyWallet")}
-                className="bg-primary p-5"
+                className="bg-primary p-4"
               >
                 <Text className="text-white">Fund Wallet</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => router.push("/SendMoneyPage")}
-                className="bg-primary p-5"
+                className="bg-primary p-4"
               >
                 <Text className="text-white">Send</Text>
               </TouchableOpacity>
-              <TouchableOpacity className="bg-primary p-5">
+              <TouchableOpacity className="bg-primary p-4">
                 <Text className="text-white">Statement</Text>
               </TouchableOpacity>
             </View>
           </View>
 
-          <View className="flex gap-4 flex-wrap flex-row">
+          <View className="flex flex-wrap justify-between flex-row">
             {infos.map((x, key) => (
               <View
                 key={key}
-                className="w-[48.3%] flex flex-col gap-3 bg-[#1A1A1A] p-3"
+                className="w-[48%] mb-4 flex flex-col gap-3 bg-[#1A1A1A] p-3"
               >
                 <View className="flex gap-2 items-center flex-row">
                   {x.icon}
@@ -211,10 +211,10 @@ const CurrencyWallet = (props: Props) => {
 
           <View className="flex flex-col my-4 gap-4">
             <View className="flex flex-row items-center justify-between w-full">
-              <Text className="text-white text-2xl font-bold">
+              <Text className="text-white text-xl font-bold">
                 Recent Transactions
               </Text>
-              <Text className="text-white text-lg">See All</Text>
+              <Text className="text-white">See All</Text>
             </View>
             {transactions.map((x, key) => (
               <View key={key} className="bg-[#1F2937] p-4">
@@ -224,15 +224,15 @@ const CurrencyWallet = (props: Props) => {
                       {x.icon}
                     </View>
                     <View>
-                      <Text className="font-bold text-white text-xl">
+                      <Text className="font-bold text-white text-lg">
                         {x.name}
                       </Text>
-                      <Text className="text-gray-300">May 15, 2023</Text>
+                      <Text className="text-gray-300 text-sm">May 15, 2023</Text>
                     </View>
                   </View>
 
                   <Text
-                    className={`font-bold text-2xl ${
+                    className={`font-bold text-xl ${
                       x.type == "credit" ? "text-primary" : "text-[#FF4D4E]"
                     }`}
                   >
@@ -249,7 +249,7 @@ const CurrencyWallet = (props: Props) => {
                 key={wallet.code}
                 className="bg-primary/50 px-5 py-3 rounded-full"
               >
-                <Text className="text-white text-lg">{wallet.label}</Text>
+                <Text className="text-white">{wallet.label}</Text>
               </TouchableOpacity>
             ))}
           </View>
