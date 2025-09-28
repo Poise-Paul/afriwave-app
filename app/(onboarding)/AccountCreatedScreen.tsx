@@ -17,10 +17,10 @@ const AccountCreatedScreen = (props: Props) => {
     <SafeAreaView className="flex-1 bg-black">
       <LogoHeader />
       <ScrollView className="flex-1">
-        <View className="flex-1 mt-10 flex-col gap-10 justify-center items-center">
+        <View className="flex-1 my-52 flex-col gap-5 justify-center items-center">
           <Octicons name="check-circle-fill" size={100} color="#2DC85B" />
-          <Text className="text-white text-center text-4xl font-bold">
-            Account Created Ssuccessfully
+          <Text className="text-white text-center text-2xl font-bold">
+            Account Created Successfully
           </Text>
           <Text className="text-gray-300 text-center text-lg">
             You're all set! Welcome aboard.

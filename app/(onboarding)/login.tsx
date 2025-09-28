@@ -20,8 +20,8 @@ const login = (props: Props) => {
       <View className="flex-1 p-5">
         <LogoHeader />
         <ScrollView>
-          <View className="my-10 flex flex-col gap-5">
-            <Text className="text-3xl text-center font-bold text-white">
+          <View className="my-10 flex p-3 flex-col gap-5">
+            <Text className="text-2xl text-center font-bold text-white">
               Welcome Back
             </Text>
             <Text className="text-gray-400 text-center">
@@ -33,14 +33,14 @@ const login = (props: Props) => {
                 <InputText title="Password" placeholder="Enter your password" />
                 <View className="justify-end items-end">
                   <TouchableOpacity>
-                    <Text className="text-primary">Forgot Password?</Text>
+                    <Text className="text-primary text-sm">Forgot Password?</Text>
                   </TouchableOpacity>
                 </View>
               </View>
               <View className="flex justify-center items-center flex-col gap-3">
                 <TouchableOpacity>
                   <Image
-                    className="h-32 w-32"
+                    className="h-24 w-24"
                     source={require("@/assets/images/FaceId.png")}
                   />
                 </TouchableOpacity>
@@ -64,7 +64,7 @@ const login = (props: Props) => {
         </ScrollView>
         <View className="flex justify-center flex-row gap-2 items-center">
           <MaterialIcons name="security" size={24} color="#2DC85B" />
-          <Text className="text-gray-300">
+          <Text className="text-gray-300 text-sm">
             Secured with end-to-end encryption
           </Text>
         </View>

@@ -27,13 +27,9 @@ const About = (props: Props) => {
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
 
   const reasons = [
-    "Search Engine (Google, Bing, etc.)",
-    "Social Media",
-    "Radio",
-    "Television",
-    "Newspaper/Online Newspaper",
-    "Billboard",
-    "Word of Mouth",
+    "Google",
+    "Instagram",
+    "LinkedIn",
     "Referral",
     "Other",
   ];
@@ -75,7 +71,8 @@ const About = (props: Props) => {
             </View>
           </View>
           <TouchableOpacity
-            onPress={() => router.push("/AfriwaveUse")}
+            // onPress={() => router.push("/AfriwaveUse")}
+            onPress={() => router.push("/AccountCreatedScreen")}
             className="bg-primary mt-10 p-4"
           >
             <Text className="text-center">Proceed</Text>

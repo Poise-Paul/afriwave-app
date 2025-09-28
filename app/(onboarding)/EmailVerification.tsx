@@ -61,7 +61,7 @@ const EmailVerification = (props: Props) => {
             <View className="bg-[#1a1a1a] flex justify-center items-center rounded-full h-24 w-24">
               <Entypo name="mail" size={40} color="#2dc75b" />
             </View>
-            <Text className="font-bold text-3xl text-white">
+            <Text className="font-bold text-2xl text-white">
               Email Verification
             </Text>
             <Text className="text-gray-200 text-xl">
@@ -126,7 +126,10 @@ const EmailVerification = (props: Props) => {
                 />
               ))}
             </View>
-            <TouchableOpacity className="bg-primary mt-10 w-[90%] p-4">
+            <TouchableOpacity
+              onPress={() => router.push("/PhoneVerification")}
+              className="bg-primary mt-10 w-[90%] p-4"
+            >
               <Text className="text-center">Verify</Text>
             </TouchableOpacity>
             <Text className="text-gray-500 mt-5 text-center">
@@ -137,7 +140,10 @@ const EmailVerification = (props: Props) => {
             </TouchableOpacity>
           </View>
         </ScrollView>
-        <TouchableOpacity onPress={() => router.push("/PhoneVerification")} className="mb-10">
+        <TouchableOpacity
+          onPress={() => router.push("/PhoneVerification")}
+          className="mb-10"
+        >
           <Text className="text-gray-500 text-center">Phone Verification</Text>
         </TouchableOpacity>
       </View>

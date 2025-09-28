@@ -67,7 +67,7 @@ const Home = ({ setActiveTab }: Props) => {
   return (
     <View className="flex-1 flex-col p-3 gap-5">
       <View className="mt-5">
-        <Text className="font-bold text-3xl text-white">Welcome, Michael</Text>
+        <Text className="font-bold text-2xl text-white">Welcome, Michael</Text>
         <Text className="text-gray-200">
           Your financial overview at a glance
         </Text>
@@ -133,7 +133,7 @@ const Home = ({ setActiveTab }: Props) => {
         </View>
 
         {walletCreated ? (
-          <View className="flex flex-row gap-4 flex-wrap">
+          <View className="flex flex-row justify-between flex-wrap">
             {wallets.map((wallet, key) => (
               <TouchableOpacity
                 onPress={() => {
@@ -141,7 +141,7 @@ const Home = ({ setActiveTab }: Props) => {
                   router.push("/CurrencyWallet");
                 }}
                 key={key}
-                className="bg-[#1A1A1A] flex flex-col gap-3 w-[48.3%] p-5"
+                className="bg-[#1A1A1A] mb-4 flex flex-col gap-3 w-[48%] p-5"
               >
                 <View className="flex flex-row items-center justify-between">
                   <View className="bg-primary self-start h-10 w-10 justify-center items-center rounded-full">
@@ -152,7 +152,7 @@ const Home = ({ setActiveTab }: Props) => {
                   <Text className="text-gray-200">{wallet.cur}</Text>
                 </View>
 
-                <Text className="text-white mt-2 font-bold text-3xl">
+                <Text className="text-white mt-2 font-bold text-xl">
                   {wallet.amount}
                 </Text>
                 <Text className="text-primary">{wallet.name}</Text>
@@ -197,7 +197,7 @@ const Home = ({ setActiveTab }: Props) => {
       {walletCreated ? (
         <View className="flex flex-col gap-2">
           <View className="flex flex-row justify-between items-center">
-            <Text className="font-bold text-white text-xl">
+            <Text className="font-bold text-white">
               Recent Transactions
             </Text>
             <TouchableOpacity>
@@ -208,11 +208,11 @@ const Home = ({ setActiveTab }: Props) => {
             {transactions.map((x, key) => (
               <View
                 key={key}
-                className="bg-[#1A1A1A] flex flex-row items-center justify-between p-5"
+                className="bg-[#1A1A1A] flex flex-row items-center justify-between p-4"
               >
                 <View className="flex flex-row gap-3 items-center">
                   <View
-                    className={`h-16 w-16 justify-center items-center ${
+                    className={`h-14 w-14 justify-center items-center ${
                       x.type == "debit" && "bg-[#FF4D4E]/20"
                     } ${x.type == "credit" && "bg-[#047429]/20"} ${
                       x.type == "normal" && "bg-[#313131]/50"
@@ -220,7 +220,7 @@ const Home = ({ setActiveTab }: Props) => {
                   >
                     {x.icon}
                   </View>
-                  <View className="flex flex-col gap-2">
+                  <View className="flex flex-col gap-1">
                     <Text className="font-bold text-lg text-white">
                       {x.name}
                     </Text>
@@ -264,7 +264,7 @@ const Home = ({ setActiveTab }: Props) => {
         </View>
       )}
       <View className="flex flex-col gap-5">
-        <Text className="font-bold text-white text-xl">Exchange Rates</Text>
+        <Text className="font-bold text-white text-lg">Exchange Rates</Text>
         <View className="bg-[#1A1A1A] flex flex-row flex-wrap p-5">
           <View className="w-[50%]">
             <Text className="text-gray-200">USD/NGN</Text>

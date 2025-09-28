@@ -19,14 +19,14 @@ const AccountBalance = (props: Props) => {
         {showBalance ? (
           <Text className="font-bold text-4xl text-white">****</Text>
         ) : (
-          <Text className="font-bold text-4xl text-white">
+          <Text className="font-bold text-3xl text-white">
             {walletCreated ? "$12,458.32" : "$0.00"}
           </Text>
         )}
         <TouchableOpacity onPress={() => setShowBalance(!showBalance)}>
           <FontAwesome5
             name={showBalance ? "eye-slash" : "eye"}
-            size={24}
+            size={20}
             color="white"
           />
         </TouchableOpacity>

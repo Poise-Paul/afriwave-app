@@ -2,6 +2,8 @@ import LogoHeader02 from "@/components/LogoHeader02";
 import { updateSelWallet } from "@/redux/slices/WalletSlice";
 import { RootState } from "@/redux/store/store";
 import {
+  Entypo,
+  FontAwesome,
   FontAwesome5,
   FontAwesome6,
   MaterialCommunityIcons,
@@ -109,31 +111,120 @@ export default function TabTwoScreen() {
               Select Transfer Method
             </Text>
             <View className="flex flex-col gap-4">
+              {selWallet == "CAD" && (
+                <TouchableOpacity
+                  onPress={() => router.push("/SelectAfriWaveReciepient")}
+                  className="flex bg-[#1A1A1A] p-5 items-center justify-between flex-row gap-4"
+                >
+                  <View className="flex flex-row items-center gap-4">
+                    <View className="bg-primary w-12 flex justify-center items-center h-12 rounded-full">
+                      <MaterialIcons
+                        name="arrow-back"
+                        size={24}
+                        color="black"
+                      />
+                    </View>
+                    <View className="flex flex-col">
+                      <Text className="font-bold text-white text-lg">
+                        Interac
+                      </Text>
+                      <Text className="text-gray-400">
+                        Send via email or phone number{" "}
+                      </Text>
+                    </View>
+                  </View>
+
+                  <MaterialIcons
+                    name="arrow-forward-ios"
+                    size={24}
+                    color="#2DC85B"
+                  />
+                </TouchableOpacity>
+              )}
+
+              {selWallet == "USD" && (
+                <TouchableOpacity
+                  onPress={() => router.push("/CardDetails")}
+                  className="bg-[#1A1A1A] items-center justify-between flex flex-row p-5"
+                >
+                  <View className="flex items-center flex-row gap-3">
+                    <View className="bg-[#0e0d0d] h-14 flex justify-center items-center w-14 rounded-full">
+                      <FontAwesome
+                        name="credit-card-alt"
+                        size={18}
+                        color="#2DC85B"
+                      />
+                    </View>
+                    <View className="flex flex-col">
+                      <Text className="text-lg text-white font-bold">
+                        Card Payment
+                      </Text>
+                      <Text className="text-gray-100">
+                        Pay with debit or credit card
+                      </Text>
+                    </View>
+                  </View>
+
+                  <Entypo name="chevron-right" size={24} color="#2DC85B" />
+                </TouchableOpacity>
+              )}
+
+              {selWallet == "NGN" && (
+                <>
+                  <TouchableOpacity
+                    onPress={() => router.push("/CardDetails")}
+                    className="bg-[#1A1A1A] items-center justify-between flex flex-row p-5"
+                  >
+                    <View className="flex items-center flex-row gap-3">
+                      <View className="bg-[#0e0d0d] h-14 flex justify-center items-center w-14 rounded-full">
+                        <FontAwesome
+                          name="credit-card-alt"
+                          size={18}
+                          color="#2DC85B"
+                        />
+                      </View>
+                      <View className="flex flex-col">
+                        <Text className="text-lg text-white font-bold">
+                          Fund With Card
+                        </Text>
+                        <Text className="text-gray-100">
+                          Pay with debit or credit card
+                        </Text>
+                      </View>
+                    </View>
+
+                    <Entypo name="chevron-right" size={24} color="#2DC85B" />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => router.push("/FundViaBankTransfer")}
+                    className="bg-[#1A1A1A] items-center justify-between flex flex-row p-5"
+                  >
+                    <View className="flex items-center flex-row gap-3">
+                      <View className="bg-[#0e0d0d] h-14 flex justify-center items-center w-14 rounded-full">
+                        <FontAwesome
+                          name="credit-card-alt"
+                          size={18}
+                          color="#2DC85B"
+                        />
+                      </View>
+                      <View className="flex flex-col">
+                        <Text className="text-lg text-white font-bold">
+                          Fund Via Bank Transfer
+                        </Text>
+                        <Text className="text-gray-100">
+                          Pay with debit or credit card
+                        </Text>
+                      </View>
+                    </View>
+
+                    <Entypo name="chevron-right" size={24} color="#2DC85B" />
+                  </TouchableOpacity>
+                </>
+              )}
               <TouchableOpacity
                 onPress={() => router.push("/SelectAfriWaveReciepient")}
                 className="flex bg-[#1A1A1A] p-5 items-center justify-between flex-row gap-4"
               >
-                <View className="flex flex-row items-center gap-4">
-                  <View className="bg-primary w-12 flex justify-center items-center h-12 rounded-full">
-                    <MaterialIcons name="arrow-back" size={24} color="black" />
-                  </View>
-                  <View className="flex flex-col">
-                    <Text className="font-bold text-white text-lg">
-                      Interac
-                    </Text>
-                    <Text className="text-gray-400">
-                      Send via email or phone number{" "}
-                    </Text>
-                  </View>
-                </View>
-
-                <MaterialIcons
-                  name="arrow-forward-ios"
-                  size={24}
-                  color="#2DC85B"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity className="flex bg-[#1A1A1A] p-5 items-center justify-between flex-row gap-4">
                 <View className="flex flex-row items-center gap-4">
                   <View className="bg-primary w-12 flex justify-center items-center h-12 rounded-full">
                     <FontAwesome5 name="user-alt" size={18} color="black" />

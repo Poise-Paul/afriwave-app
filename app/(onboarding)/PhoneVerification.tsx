@@ -66,7 +66,7 @@ const PhoneVerification = (props: Props) => {
         <View className="bg-[#1a1a1a] h-24 w-20 flex justify-center items-center rounded-full">
           <MaterialIcons name="phone-iphone" size={35} color="#2dc75b" />
         </View>
-        <Text className="text-3xl font-bold text-white">
+        <Text className="text-2xl font-bold text-white">
           Phone Verification
         </Text>
         <View className="bg-[#1a1a1a] flex flex-col gap-4 py-10 px-7">
@@ -119,7 +119,7 @@ const PhoneVerification = (props: Props) => {
                       onChange(text);
                     }}
                     value={value}
-                    className="bg-[#323232]  mt-2 text-gray-200 border-[1px] mr-3 w-14 border-primary/10 transition-all focus:border-secondary focus:border-[1px] focus:shadow-lg focus:shadow-secondary/50 duration-300 ease-in-out p-5  rounded-lg"
+                    className="bg-[#323232]  mt-2 text-gray-200 border-[1px] mr-3 w-14 border-primary/10 transition-all focus:border-secondary focus:border-[1px] focus:shadow-lg focus:shadow-secondary/50 duration-300 ease-in-out p-5"
                   />
                 )}
                 name={x}
@@ -130,7 +130,7 @@ const PhoneVerification = (props: Props) => {
             ))}
           </View>
           <TouchableOpacity
-          onPress={() => router.push("/VerificationSuccessful")}
+            onPress={() => router.push("/VerificationSuccessful")}
             disabled={holdbtn}
             className={`bg-primary ${holdbtn && "opacity-30"} p-4`}
           >
@@ -140,13 +140,17 @@ const PhoneVerification = (props: Props) => {
             Resend Code
           </Text>
         </View>
-        <View className="flex flex-col gap-4">
+        <View className="flex flex-col items-center gap-4">
           <Text className="text-gray-300">
             Need to verify your email instead?
           </Text>
-          <Text className="font-semibold text-primary text-2xl">
-            Go to Email Verification
-          </Text>
+          <TouchableOpacity
+            onPress={() => router.push("/(onboarding)/EmailVerification")}
+          >
+            <Text className="font-semibold text-primary text-xl">
+              Go to Email Verification
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

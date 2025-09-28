@@ -20,14 +20,19 @@ const PersonalDetailsUpdate = ({ setActiveTab }: Props) => {
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState<"date" | "time">("date");
 
+  const [showCalendar, setShowCalendar] = useState(false);
+
   const onChange = (event: any, selectedDate?: Date) => {
-    const currentDate = selectedDate || date;
-    setShow(false);
-    setDate(currentDate);
+    if (event.type === "set" && selectedDate) {
+      setShow(false);
+      setDate(selectedDate);
+    } else {
+      setShow(false); // User cancelled
+    }
   };
 
   return (
-    <View className="flex-1 mt-5">
+    <View className="flex-1 p-3 mt-5">
       <Text className="text-3xl font-bold text-white">Profile Details</Text>
       <Text className="text-gray-400">
         Please fill in your personal information to complete your KYC
@@ -94,7 +99,7 @@ const PersonalDetailsUpdate = ({ setActiveTab }: Props) => {
                       ? "checkbox-marked-circle"
                       : "checkbox-blank-circle"
                   }
-                  size={24}
+                  size={20}
                   color={selectedGender == x ? "#2DC85B" : "white"}
                 />
                 <Text className="text-white">{x}</Text>
@@ -111,17 +116,21 @@ const PersonalDetailsUpdate = ({ setActiveTab }: Props) => {
               placeholder="DD/MM/YYYY"
               value={date ? date.toDateString() : ""}
             />
-            <FontAwesome5 name="calendar-day" size={24} color="#d1d5db" />
+            <TouchableOpacity onPress={() => setShowCalendar(!showCalendar)}>
+              <FontAwesome5 name="calendar-day" size={24} color="#d1d5db" />
+            </TouchableOpacity>
           </View>
-
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            onChange={onChange}
-            themeVariant="dark"
-          />
+          <View className="flex items-center justify-center">
+            {showCalendar && (
+              <DateTimePicker
+                value={date}
+                mode={mode}
+                display="spinner"
+                onChange={onChange}
+                themeVariant="dark"
+              />
+            )}
+          </View>
         </View>
         <TouchableOpacity
           onPress={() => setActiveTab(0)}
